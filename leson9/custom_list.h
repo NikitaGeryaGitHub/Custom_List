@@ -1,16 +1,30 @@
 #pragma once
+struct Node 
+{
+	Node(int value)
+	{
+		this->value = value;
+		next = prev = nullptr;
+	}
+
+	int value;
+	Node* next;
+	Node* prev;
+};
+
 class List
 {
 private:
-	int* head;
-	int* tail;
+
+	Node* head;
+	Node* tail;
 	int size;
 
 public:
 	List();
 	~List();
 
-	void AddElements();
+	void AddElement(int value);
 	void RemoveElements();
 	int GetByIndex(int index);
 };

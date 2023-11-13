@@ -7,7 +7,17 @@ List::List()
 	size = 0;
 }
 
-void List::AddElements()
+void List::AddElement(int value)
 {
-	
+	if (head == nullptr)
+	{
+		head = new Node(value);
+		tail = head;
+		return;
+	}
+
+	tail->next = new Node(value);
+	tail->next->prev = tail;
+	tail = tail->next;
+	size++;
 }
