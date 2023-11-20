@@ -1,5 +1,7 @@
 #include "custom_list.h"
 
+#include <exception>
+
 List::List()
 {
 	head = nullptr;
@@ -9,35 +11,76 @@ List::List()
 
 List::~List()
 {
+	Node* iterator = tail;
+	while (tail != nullptr)
+	{
+		iterator = tail->prev;
+		delete tail;
+		tail = iterator;
+	}
 }
 
-void List::AddElement(int value, int index, int* arr)
+void List::AddElement(int value)
 {
 	if (head == nullptr)
 	{
-		head = new Node(value, index);
+		head = new Node(value);
 		tail = head;
-		arr[value] = tail->index2 = head->index2 = index;
 		size++;
 		return;
 	}
 
-	tail->next = new Node(value, index);
-	tail->next->index2 = index;
+	tail->next = new Node(value);
 	tail->next->prev = tail;
-	tail->next->prev->index2 = tail->index2;
 	tail = tail->next;
-	arr[value] = tail->index2 = tail->next->index2;
 	size++;
 }
 
-void List::RemoveElement()
+void List::RemoveElement(int index)
 {
+	int counter = 0;
+	Node* iterator = head;
+
+	while (iterator != nullptr)
+	{
+		if (counter == index)
+		{
+
+			if (iterator == head)
+			{
+				delete iterator;
+			}
+
+			if (iterator == tail)
+			{
+				delete iterator;
+			}
+
+			else
+			{
+				iterator->prev->next = iterator->next;
+				iterator->next->prev = iterator->prev;
+				delete iterator;
+			}
+		}
+		counter++;
+		iterator = head->next;
+	}
 }
 
-void List::GetByIndex(int index, int* arr)
+int List::GetByIndex(int index)
 {
-	int i = index;
-	std::cout << arr[i] << endl;
+	int counter = 0;
+	Node* iterator = head;
+	while (iterator != nullptr)
+	{
+		if (counter == index)
+		{
+			return iterator->value;
+		}
+		counter++;
+		iterator = iterator->next;
+	}
 
+	throw new std::exception("Index out of the list range");
 }
