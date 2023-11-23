@@ -28,4 +28,5 @@ public:
 	void AddElement(int value);
 	void RemoveElement(int index);
 	int GetByIndex(int index);
+	void FillRand(int value);
 };

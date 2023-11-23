@@ -48,11 +48,13 @@ void List::RemoveElement(int index)
 
 			if (iterator == head)
 			{
+				head = head->next;
 				delete iterator;
 			}
 
-			if (iterator == tail)
+			else if (iterator == tail)
 			{
+				tail = tail->prev;
 				delete iterator;
 			}
 
@@ -61,11 +63,15 @@ void List::RemoveElement(int index)
 				iterator->prev->next = iterator->next;
 				iterator->next->prev = iterator->prev;
 				delete iterator;
+				iterator = nullptr;
 			}
+			break;
 		}
 		counter++;
-		iterator = head->next;
+		iterator = iterator->next;
 	}
+
+	int i = 10;
 }
 
 int List::GetByIndex(int index)
@@ -83,4 +89,15 @@ int List::GetByIndex(int index)
 	}
 
 	throw new std::exception("Index out of the list range");
+}
+
+void List::FillRand(int value)
+{
+	while ()
+	{
+		Node* iterator = head;
+		head->value = rand() % value;
+		iterator = iterator->next;
+	}
+	
 }

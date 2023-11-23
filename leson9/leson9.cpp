@@ -9,14 +9,17 @@ int main()
 
     for (int i = 0; i < n; i++)
     {
-        list.AddElement(i * n + i * i);
+        list.AddElement(n);
     }
 
+    
+    list.FillRand(n);
+    
     int x;
-    std::cin >> x >>std::endl;
-    list.GetByIndex(x);
+    std::cin >> x;
+    std::cout << list.GetByIndex(x) << std::endl;
     int v;
-    std::cin >> v >>std::endl;
+    std::cin >> v;
     list.RemoveElement(v);
 
 }
