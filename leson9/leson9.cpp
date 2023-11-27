@@ -11,9 +11,9 @@ int main()
     {
         list.AddElement(n);
     }
-
     
     list.FillRand(n);
+    list.sort(n);
     
     int x;
     std::cin >> x;

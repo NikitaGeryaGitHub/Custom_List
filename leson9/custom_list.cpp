@@ -93,11 +93,35 @@ int List::GetByIndex(int index)
 
 void List::FillRand(int value)
 {
-	while ()
+	Node* iterator = head;
+	int counter = 0;
+	while (counter < value)
 	{
-		Node* iterator = head;
-		head->value = rand() % value;
+		iterator->value = rand() % value;
 		iterator = iterator->next;
+		counter++;
 	}
 	
+}
+
+void List::sort(int value)
+{
+	Node* iterator = head;
+	Node* iterator_next = iterator->next;
+
+
+	for (int i = 0; i < value; i++)
+	{
+		for (int j = 0; j + 1 < value; j++)
+		{
+			if (iterator > iterator_next)
+			{
+				int ptr = iterator->value;
+				iterator->value = iterator_next->value;
+				iterator_next->value = ptr;
+			}
+			iterator_next = iterator_next->next;
+		}
+		iterator = iterator->next;
+	}
 }
