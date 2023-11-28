@@ -13,7 +13,7 @@ int main()
     }
     
     list.FillRand(n);
-    list.sort(n);
+    list.Sort(n);
     
     int x;
     std::cin >> x;

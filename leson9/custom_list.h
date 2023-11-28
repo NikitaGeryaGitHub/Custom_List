@@ -29,5 +29,5 @@ public:
 	void RemoveElement(int index);
 	int GetByIndex(int index);
 	void FillRand(int value);
-	void sort(int value);
+	void Sort(int value);
 };
